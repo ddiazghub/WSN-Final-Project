@@ -25,7 +25,7 @@
 #include "ns3/random-variable-stream.h"
 #include "ns3/periodic-sender-helper.h"
 #include "ns3/command-line.h"
-#include "ns3/network-server-helper.h"
+#include "ns3/people-counter-helper.h"
 #include "ns3/correlated-shadowing-propagation-loss-model.h"
 #include "ns3/building-penetration-loss.h"
 #include "ns3/building-allocator.h"
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
 	// helper.EnableSimulationTimePrinting ();
 
 	//Create the NetworkServerHelper
-	NetworkServerHelper nsHelper = NetworkServerHelper ();
+	PeopleCounterHelper peopleCounterHelper = PeopleCounterHelper ();
 
 	//Create the ForwarderHelper
 	ForwarderHelper forHelper = ForwarderHelper ();
@@ -280,11 +280,11 @@ int main(int argc, char *argv[])
 	// Create a NS for the network
 	std::string adrType = "ns3::AdrComponent";
 
-	nsHelper.SetEndDevices (loraNodes);
-	nsHelper.SetGateways (gateways);
-	nsHelper.Install (server);
-	nsHelper.EnableAdr (true);
-  	nsHelper.SetAdr (adrType);
+	peopleCounterHelper.SetEndDevices (loraNodes);
+	peopleCounterHelper.SetGateways (gateways);
+	peopleCounterHelper.Install (server);
+	peopleCounterHelper.EnableAdr (true);
+  	peopleCounterHelper.SetAdr (adrType);
 
 	//Create a forwarder for each gateway
 	forHelper.Install (gateways);
