@@ -7,10 +7,13 @@
 #     conf.check_nonfatal(header_name='stdint.h', define_name='HAVE_STDINT_H')
 
 def build(bld):
-    module = bld.create_ns3_module('wsn', ['core', 'lorawan', 'netanim'])
+    module = bld.create_ns3_module('wsn', ['core', 'lorawan', 'netanim', 'network',
+                                               'propagation', 'mobility',
+                                               'point-to-point', 'energy',
+                                               'buildings'])
     module.source = [
-        'model/wsn.cc',
-        'helper/wsn-helper.cc',
+        'model/people-counter.cc',
+        'helper/people-counter-helper.cc',
         ]
 
     module_test = bld.create_ns3_module_test_library('wsn')
@@ -26,8 +29,8 @@ def build(bld):
     headers = bld(features='ns3header')
     headers.module = 'wsn'
     headers.source = [
-        'model/wsn.h',
-        'helper/wsn-helper.h',
+        'model/people-counter.h',
+        'helper/people-counter-helper.h',
         ]
 
     if bld.env.ENABLE_EXAMPLES:

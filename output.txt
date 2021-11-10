@@ -1,0 +1,1242 @@
+Waf: Entering directory `/home/david/ns-3.35/build'
+[910/912] Compiling examples/wsn-uninorte.cc
+[911/912] Linking ../../build/src/wsn/examples/ns3.35-wsn-uninorte-debug
+Waf: Leaving directory `/home/david/ns-3.35/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (7.244s)
+Completed configuration
+AnimationInterface WARNING:Node:17 Does not have a mobility model. Use SetConstantPosition if it is stationary
+AnimationInterface WARNING:Node:17 Does not have a mobility model. Use SetConstantPosition if it is stationary
+Running simulation...
+Starting cycle over all 17 PHYs
+Sender mobility: 396:325:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-125.921dbm, distance=174.244m, delay=+581ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-118.288dbm, distance=104.695m, delay=+349ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-129.257dbm, distance=94.3716m, delay=+315ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-135.462dbm, distance=191.262m, delay=+638ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-138.283dbm, distance=320.938m, delay=+1071ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-129.125dbm, distance=96.8814m, delay=+323ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-129.463dbm, distance=220.32m, delay=+735ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-117.631dbm, distance=156.975m, delay=+524ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-108.67dbm, distance=42.2019m, delay=+141ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-118.507dbm, distance=110.571m, delay=+369ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-122.794dbm, distance=96.5194m, delay=+322ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-128.266dbm, distance=130.269m, delay=+435ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-109.347dbm, distance=75.8024m, delay=+253ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-152.979dbm, distance=160.751m, delay=+536ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-132.599dbm, distance=221.633m, delay=+739ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-119.191dbm, distance=88.3233m, delay=+295ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 317:185:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-53.5237dbm, distance=33.9706m, delay=+113ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-133.435dbm, distance=160.751m, delay=+536ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-167.812dbm, distance=244.753m, delay=+816ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-70.4127dbm, distance=66.8506m, delay=+223ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-129.764dbm, distance=97.949m, delay=+327ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-135.263dbm, distance=182.165m, delay=+608ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-130.378dbm, distance=107.838m, delay=+360ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-102.774dbm, distance=71.5122m, delay=+239ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-32.3584dbm, distance=8m, delay=+27ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-134.219dbm, distance=171.026m, delay=+570ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-132.563dbm, distance=186.304m, delay=+621ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-135.364dbm, distance=150.96m, delay=+504ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-68.1705dbm, distance=51.6624m, delay=+172ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-116.742dbm, distance=96.6902m, delay=+323ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-123.108dbm, distance=66.888m, delay=+223ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-143.964dbm, distance=185.024m, delay=+617ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 355:240:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-69.6801dbm, distance=81.3941m, delay=+272ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-121.594dbm, distance=94.3716m, delay=+315ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-142.068dbm, distance=185.27m, delay=+618ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-122.405dbm, distance=125.399m, delay=+418ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-126.825dbm, distance=239.426m, delay=+799ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-115.072dbm, distance=60.8276m, delay=+203ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-108.536dbm, distance=132.004m, delay=+440ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-65.323dbm, distance=62.6498m, delay=+209ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-130.204dbm, distance=110.223m, delay=+368ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-126.285dbm, distance=143.178m, delay=+478ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-131.945dbm, distance=109.772m, delay=+366ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-65.9226dbm, distance=43.6807m, delay=+146ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-97.9297dbm, distance=44.7214m, delay=+149ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-80.3793dbm, distance=66.8506m, delay=+223ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-119.337dbm, distance=130.863m, delay=+437ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-126.685dbm, distance=134.629m, delay=+449ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 335:280:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-104.626dbm, distance=120.104m, delay=+401ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-103.298dbm, distance=75.8024m, delay=+253ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-114.102dbm, distance=148.071m, delay=+494ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-106.786dbm, distance=44.7214m, delay=+149ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-99.9321dbm, distance=116.297m, delay=+388ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-116.634dbm, distance=245.204m, delay=+818ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-108.709dbm, distance=94.3398m, delay=+315ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-94.8009dbm, distance=147.054m, delay=+491ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-108.427dbm, distance=95.5249m, delay=+319ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-72.8895dbm, distance=75.0267m, delay=+250ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-81.1198dbm, distance=98.4886m, delay=+329ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-83.5286dbm, distance=65.192m, delay=+217ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-108.037dbm, distance=88.0227m, delay=+294ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-129.781dbm, distance=96.6902m, delay=+323ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-109.306dbm, distance=150.083m, delay=+501ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-64.3041dbm, distance=91.2414m, delay=+304ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 230:230:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-120.483dbm, distance=130.384m, delay=+435ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-131.231dbm, distance=191.262m, delay=+638ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-126.733dbm, distance=237.171m, delay=+791ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-122.542dbm, distance=125.399m, delay=+418ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-117.427dbm, distance=135.093m, delay=+451ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-134.667dbm, distance=185m, delay=+617ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-64.0882dbm, distance=72.8011m, delay=+243ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-100.166dbm, distance=105.119m, delay=+351ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-120.74dbm, distance=178.393m, delay=+595ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-108.92dbm, distance=154.353m, delay=+515ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-139.452dbm, distance=126.194m, delay=+421ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-115.122dbm, distance=140.688m, delay=+469ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-111.054dbm, distance=116.297m, delay=+388ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-140.696dbm, distance=97.949m, delay=+327ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-76.985dbm, distance=85.44m, delay=+285ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-124.33dbm, distance=166.433m, delay=+555ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 325:185:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-54.7303dbm, distance=29.1548m, delay=+97ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-122.26dbm, distance=156.975m, delay=+524ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-136.625dbm, distance=243.311m, delay=+812ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-75.5973dbm, distance=62.6498m, delay=+209ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-108.528dbm, distance=105.119m, delay=+351ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-121.651dbm, distance=189.737m, delay=+633ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-114.035dbm, distance=100.623m, delay=+336ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-99.7342dbm, distance=79.0569m, delay=+264ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-120.779dbm, distance=169.098m, delay=+564ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-120.354dbm, distance=187.417m, delay=+625ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-125.641dbm, distance=152.069m, delay=+507ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-67.2781dbm, distance=43.9659m, delay=+147ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-103.28dbm, distance=95.5249m, delay=+319ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-51.208dbm, distance=8m, delay=+27ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-114.806dbm, distance=73.8241m, delay=+246ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-129.504dbm, distance=185.068m, delay=+617ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 300:335:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-140.107dbm, distance=179.513m, delay=+599ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-129.891dbm, distance=96.5194m, delay=+322ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-140.89dbm, distance=111.018m, delay=+370ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-139.292dbm, distance=109.772m, delay=+366ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-127.959dbm, distance=126.194m, delay=+421ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-137.155dbm, distance=261.008m, delay=+871ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-148.3dbm, distance=155.724m, delay=+519ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-126.191dbm, distance=182.003m, delay=+607ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-140.992dbm, distance=152.069m, delay=+507ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-71.7804dbm, distance=63.7887m, delay=+213ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-64.4545dbm, distance=35.3553m, delay=+118ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-138.809dbm, distance=152.506m, delay=+509ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-65.4659dbm, distance=65.192m, delay=+217ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-155.85dbm, distance=150.96m, delay=+504ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-156.005dbm, distance=189.275m, delay=+631ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-50.7134dbm, distance=40.3113m, delay=+134ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 365:425:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-133.284dbm, distance=266.177m, delay=+888ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-131.13dbm, distance=104.695m, delay=+349ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-136.99dbm, distance=185.27m, delay=+618ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-124.785dbm, distance=237.171m, delay=+791ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-134.137dbm, distance=372.022m, delay=+1241ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-120.149dbm, distance=201.308m, delay=+671ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-117.682dbm, distance=288.877m, delay=+964ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-137.856dbm, distance=243.311m, delay=+812ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-111.657dbm, distance=75.06m, delay=+250ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-115.026dbm, distance=89.0225m, delay=+297ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-127.852dbm, distance=111.018m, delay=+370ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-130.718dbm, distance=227.009m, delay=+757ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-120.079dbm, distance=148.071m, delay=+494ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-146.26dbm, distance=244.753m, delay=+816ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-146.347dbm, distance=294.364m, delay=+982ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-121.494dbm, distance=71.0634m, delay=+237ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 367:198:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-61.6739dbm, distance=46.6154m, delay=+155ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-118.129dbm, distance=130.269m, delay=+435ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-137.848dbm, distance=227.009m, delay=+757ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-71.7855dbm, distance=43.6807m, delay=+146ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-121.717dbm, distance=140.688m, delay=+469ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-118.937dbm, distance=233.694m, delay=+780ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-103.518dbm, distance=57.6888m, delay=+192ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-100.143dbm, distance=123.016m, delay=+410ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-52.7311dbm, distance=43.9659m, delay=+147ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-124.851dbm, distance=152.082m, delay=+507ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-115.894dbm, distance=186.462m, delay=+622ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-136.465dbm, distance=152.506m, delay=+509ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-105.471dbm, distance=88.0227m, delay=+294ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-86.1076dbm, distance=51.6624m, delay=+172ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-113.859dbm, distance=117.273m, delay=+391ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-121.131dbm, distance=178.306m, delay=+595ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 145:125:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-115.134dbm, distance=198.116m, delay=+661ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-132.839dbm, distance=320.938m, delay=+1071ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-143.489dbm, distance=372.022m, delay=+1241ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-127.116dbm, distance=239.426m, delay=+799ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-113.588dbm, distance=135.093m, delay=+451ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-128.718dbm, distance=289.698m, delay=+966ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-93.2503dbm, distance=110.68m, delay=+369ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-123.307dbm, distance=189.737m, delay=+633ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-134.357dbm, distance=312.592m, delay=+1043ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-121.134dbm, distance=287.272m, delay=+958ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-144.96dbm, distance=261.008m, delay=+871ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-127.15dbm, distance=233.694m, delay=+780ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-124.157dbm, distance=245.204m, delay=+818ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-127.738dbm, distance=182.165m, delay=+608ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-118.486dbm, distance=117.686m, delay=+393ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-133.404dbm, distance=301.081m, delay=+1004ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 362:350:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-134.528dbm, distance=191.269m, delay=+638ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-114.921dbm, distance=42.2019m, delay=+141ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-135.237dbm, distance=75.06m, delay=+250ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-126.864dbm, distance=110.223m, delay=+368ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-130.405dbm, distance=178.393m, delay=+595ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-134.921dbm, distance=312.592m, delay=+1043ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-127.248dbm, distance=131.183m, delay=+438ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-122.254dbm, distance=220.554m, delay=+736ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-125.694dbm, distance=169.098m, delay=+564ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-72.8108dbm, distance=69.9214m, delay=+233ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-91.3184dbm, distance=63.7887m, delay=+213ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-124.066dbm, distance=152.082m, delay=+507ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-69.8397dbm, distance=75.0267m, delay=+250ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-148.762dbm, distance=171.026m, delay=+570ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-138.484dbm, distance=224.508m, delay=+749ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-56.3359dbm, distance=46.5188m, delay=+155ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 340:160:0
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-131.842dbm, distance=174.244m, delay=+581ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-135.911dbm, distance=266.177m, delay=+888ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-90.183dbm, distance=81.3941m, delay=+272ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-116.147dbm, distance=130.384m, delay=+435ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-130.426dbm, distance=198.116m, delay=+661ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-104.635dbm, distance=102.591m, delay=+342ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-96.5315dbm, distance=90m, delay=+300ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-53.8518dbm, distance=29.1548m, delay=+97ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-131.17dbm, distance=191.269m, delay=+638ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-120.941dbm, distance=214.767m, delay=+716ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-139.178dbm, distance=179.513m, delay=+599ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-64.5446dbm, distance=46.6154m, delay=+155ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-113.32dbm, distance=120.104m, delay=+401ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-71.3905dbm, distance=33.9706m, delay=+113ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-119.698dbm, distance=80.6226m, delay=+269ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-130.469dbm, distance=210.95m, delay=+704ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 250:160:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-95.0809dbm, distance=90m, delay=+300ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-107.165dbm, distance=220.32m, delay=+735ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-120.512dbm, distance=288.877m, delay=+964ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-107.511dbm, distance=132.004m, delay=+440ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-81.733dbm, distance=72.8011m, delay=+243ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-102.241dbm, distance=110.68m, delay=+369ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-103.126dbm, distance=179.234m, delay=+598ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-99.4402dbm, distance=79.0569m, delay=+264ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-124.646dbm, distance=220.554m, delay=+736ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-104.269dbm, distance=214.767m, delay=+716ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-121.255dbm, distance=182.003m, delay=+607ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-104.227dbm, distance=123.016m, delay=+410ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-93.5782dbm, distance=147.054m, delay=+491ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-116.942dbm, distance=71.5122m, delay=+239ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-51.2817dbm, distance=14.1421m, delay=+47ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-113.017dbm, distance=221.359m, delay=+738ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 295:370:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-126.183dbm, distance=214.767m, delay=+716ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-104.627dbm, distance=110.571m, delay=+369ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-99.3868dbm, distance=89.0225m, delay=+297ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-126.403dbm, distance=143.178m, delay=+478ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-105.955dbm, distance=154.353m, delay=+515ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-118.13dbm, distance=287.272m, delay=+958ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 415:230:0
+Propagation: txPower=14dbm, rxPower=-120.992dbm, distance=184.391m, delay=+615ns
+Getting node index from NetDevice, since it exists
+dstNode = 6
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-102.3dbm, distance=214.767m, delay=+716ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-122.949dbm, distance=187.417m, delay=+625ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-75.5649dbm, distance=69.9214m, delay=+233ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-66.854dbm, distance=35.3553m, delay=+118ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-117.966dbm, distance=186.462m, delay=+622ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-72.2954dbm, distance=98.4886m, delay=+329ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-137.914dbm, distance=186.304m, delay=+621ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-119.902dbm, distance=222.767m, delay=+743ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-42.1791dbm, distance=25m, delay=+83ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Starting cycle over all 17 PHYs
+Sender mobility: 415:230:0
+Receiver mobility: 340:160:0
+Propagation: txPower=14dbm, rxPower=-125.354dbm, distance=102.591m, delay=+342ns
+Getting node index from NetDevice, since it exists
+dstNode = 0
+Scheduling reception of the packet
+Receiver mobility: 396:325:0
+Propagation: txPower=14dbm, rxPower=-126.679dbm, distance=96.8814m, delay=+323ns
+Getting node index from NetDevice, since it exists
+dstNode = 1
+Scheduling reception of the packet
+Receiver mobility: 365:425:0
+Propagation: txPower=14dbm, rxPower=-128.155dbm, distance=201.308m, delay=+671ns
+Getting node index from NetDevice, since it exists
+dstNode = 2
+Scheduling reception of the packet
+Receiver mobility: 355:240:0
+Propagation: txPower=14dbm, rxPower=-110.096dbm, distance=60.8276m, delay=+203ns
+Getting node index from NetDevice, since it exists
+dstNode = 3
+Scheduling reception of the packet
+Receiver mobility: 230:230:0
+Propagation: txPower=14dbm, rxPower=-114.614dbm, distance=185m, delay=+617ns
+Getting node index from NetDevice, since it exists
+dstNode = 4
+Scheduling reception of the packet
+Receiver mobility: 145:125:0
+Propagation: txPower=14dbm, rxPower=-127.079dbm, distance=289.698m, delay=+966ns
+Getting node index from NetDevice, since it exists
+dstNode = 5
+Scheduling reception of the packet
+Receiver mobility: 250:160:0
+Propagation: txPower=14dbm, rxPower=-105.863dbm, distance=179.234m, delay=+598ns
+Getting node index from NetDevice, since it exists
+dstNode = 7
+Scheduling reception of the packet
+Receiver mobility: 325:185:0
+Propagation: txPower=14dbm, rxPower=-112.973dbm, distance=100.623m, delay=+336ns
+Getting node index from NetDevice, since it exists
+dstNode = 8
+Scheduling reception of the packet
+Receiver mobility: 362:350:0
+Propagation: txPower=14dbm, rxPower=-126.473dbm, distance=131.183m, delay=+438ns
+Getting node index from NetDevice, since it exists
+dstNode = 9
+Scheduling reception of the packet
+Receiver mobility: 295:370:0
+Propagation: txPower=14dbm, rxPower=-118.615dbm, distance=184.391m, delay=+615ns
+Getting node index from NetDevice, since it exists
+dstNode = 10
+Scheduling reception of the packet
+Receiver mobility: 300:335:0
+Propagation: txPower=14dbm, rxPower=-137.956dbm, distance=155.724m, delay=+519ns
+Getting node index from NetDevice, since it exists
+dstNode = 11
+Scheduling reception of the packet
+Receiver mobility: 367:198:0
+Propagation: txPower=14dbm, rxPower=-102.231dbm, distance=57.6888m, delay=+192ns
+Getting node index from NetDevice, since it exists
+dstNode = 12
+Scheduling reception of the packet
+Receiver mobility: 335:280:0
+Propagation: txPower=14dbm, rxPower=-106.967dbm, distance=94.3398m, delay=+315ns
+Getting node index from NetDevice, since it exists
+dstNode = 13
+Scheduling reception of the packet
+Receiver mobility: 317:185:0
+Propagation: txPower=14dbm, rxPower=-129.942dbm, distance=107.838m, delay=+360ns
+Getting node index from NetDevice, since it exists
+dstNode = 14
+Scheduling reception of the packet
+Receiver mobility: 260:150:0
+Propagation: txPower=14dbm, rxPower=-135.131dbm, distance=174.428m, delay=+582ns
+Getting node index from NetDevice, since it exists
+dstNode = 15
+Scheduling reception of the packet
+Receiver mobility: 320:370:0
+Propagation: txPower=14dbm, rxPower=-131.005dbm, distance=169.189m, delay=+564ns
+Getting node index from NetDevice, since it exists
+dstNode = 16
+Scheduling reception of the packet
+Computing performance metrics...
+15.000000 14.000000
