@@ -32,6 +32,9 @@
 #include "ns3/class-a-end-device-lorawan-mac.h"
 #include "ns3/mac-command.h"
 #include "ns3/people-counter.h"
+#include "ns3/people-counter-entry.h"
+#include "ns3/location.h"
+#include <iostream>
 
 namespace ns3 {
 namespace lorawan {
@@ -50,33 +53,13 @@ PeopleCounter::GetTypeId (void)
   return tid;
 }
 
-PeopleCounter::PeopleCounter () :
-  m_status (Create<NetworkStatus> ()),
-  m_controller (Create<NetworkController> (m_status)),
-  m_scheduler (Create<NetworkScheduler> (m_status, m_controller))
-{
-  NS_LOG_FUNCTION_NOARGS ();
+PeopleCounter::PeopleCounter () : NetworkServer() {}
+
+PeopleCounter::~PeopleCounter () {
+
 }
 
-PeopleCounter::~PeopleCounter ()
-{
-  NS_LOG_FUNCTION_NOARGS ();
-}
-
-void
-PeopleCounter::StartApplication (void)
-{
-  NS_LOG_FUNCTION_NOARGS ();
-}
-
-void
-PeopleCounter::StopApplication (void)
-{
-  NS_LOG_FUNCTION_NOARGS ();
-}
-
-void
-PeopleCounter::AddGateway (Ptr<Node> gateway, Ptr<NetDevice> netDevice)
+void PeopleCounter::AddGateway (Ptr<Node> gateway, Ptr<NetDevice> netDevice)
 {
   NS_LOG_FUNCTION (this << gateway);
 
@@ -144,6 +127,22 @@ PeopleCounter::AddNode (Ptr<Node> node)
 
   // Update the NetworkStatus about the existence of this node
   m_status->AddNode (edLorawanMac);
+
+  int nodeNumber = m_status->CountEndDevices ();
+  
+  this->nodes.insert (std::pair<LoraDeviceAddress, Ptr<PeopleCounterEntry>> (
+      edLorawanMac->GetDeviceAddress (), Create<PeopleCounterEntry> (nodeNumber, nodeNumber)));
+
+    for(auto it = locations.cbegin(); it != locations.cend(); ++it)
+    {
+        std::cout << it->first << " " << it->second << "\n";
+    }
+    std::cout << std::endl;
+
+    for(auto it = nodes.cbegin(); it != nodes.cend(); ++it)
+    {
+        std::cout << it->first << " " << it->second << "\n";
+    }
 }
 
 bool
@@ -168,20 +167,6 @@ PeopleCounter::Receive (Ptr<NetDevice> device, Ptr<const Packet> packet,
   m_controller->OnNewPacket (packet);
 
   return true;
-}
-
-void
-PeopleCounter::AddComponent (Ptr<NetworkControllerComponent> component)
-{
-  NS_LOG_FUNCTION (this << component);
-
-  m_controller->Install (component);
-}
-
-Ptr<NetworkStatus>
-PeopleCounter::GetNetworkStatus (void)
-{
-  return m_status;
 }
 
 }

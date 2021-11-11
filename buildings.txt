@@ -1,0 +1,16 @@
+set object 1 rect from 1,1 to 131,131
+set object 2 rect from 132,1 to 262,131
+set object 3 rect from 263,1 to 393,131
+set object 4 rect from 394,1 to 524,131
+set object 5 rect from 1,132 to 131,262
+set object 6 rect from 132,132 to 262,262
+set object 7 rect from 263,132 to 393,262
+set object 8 rect from 394,132 to 524,262
+set object 9 rect from 1,263 to 131,393
+set object 10 rect from 132,263 to 262,393
+set object 11 rect from 263,263 to 393,393
+set object 12 rect from 394,263 to 524,393
+set object 13 rect from 1,394 to 131,524
+set object 14 rect from 132,394 to 262,524
+set object 15 rect from 263,394 to 393,524
+set object 16 rect from 394,394 to 524,524

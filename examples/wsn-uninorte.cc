@@ -23,16 +23,18 @@
 #include "ns3/position-allocator.h"
 #include "ns3/double.h"
 #include "ns3/random-variable-stream.h"
-#include "ns3/periodic-sender-helper.h"
 #include "ns3/command-line.h"
-#include "ns3/people-counter-helper.h"
 #include "ns3/correlated-shadowing-propagation-loss-model.h"
 #include "ns3/building-penetration-loss.h"
 #include "ns3/building-allocator.h"
 #include "ns3/buildings-helper.h"
 #include "ns3/forwarder-helper.h"
 #include "ns3/netanim-module.h"
+#include "ns3/people-counter-helper.h"
+#include "ns3/people-counter-node-helper.h"
+#include "ns3/people-counter-node.h"
 #include "network-settings.h"
+#include <map>
 #include <algorithm>
 #include <ctime>
 
@@ -45,121 +47,119 @@ NS_LOG_COMPONENT_DEFINE ("ComplexLorawanNetworkExample");
 #define GW_ICON "/home/david/ns-3.35/src/wsn/res/gw.png"
 #define MAP "/home/david/ns-3.35/src/wsn/res/map.png"
 
-int appPeriodSeconds = 600;
-
 // Output control
 bool print = true;
 
 int main(int argc, char *argv[])
 {
-	// Set up logging
-	LogComponentEnable ("ComplexLorawanNetworkExample", LOG_LEVEL_ALL);
-	LogComponentEnable("LoraChannel", LOG_LEVEL_INFO);
-	// LogComponentEnable("LoraPhy", LOG_LEVEL_ALL);
-	// LogComponentEnable("EndDeviceLoraPhy", LOG_LEVEL_ALL);
-	// LogComponentEnable("GatewayLoraPhy", LOG_LEVEL_ALL);
-	// LogComponentEnable("LoraInterferenceHelper", LOG_LEVEL_ALL);
-	// LogComponentEnable("LorawanMac", LOG_LEVEL_ALL);
-	// LogComponentEnable("EndDeviceLorawanMac", LOG_LEVEL_ALL);
-	// LogComponentEnable("ClassAEndDeviceLorawanMac", LOG_LEVEL_ALL);
-	// LogComponentEnable("GatewayLorawanMac", LOG_LEVEL_ALL);
-	// LogComponentEnable("LogicalLoraChannelHelper", LOG_LEVEL_ALL);
-	// LogComponentEnable("LogicalLoraChannel", LOG_LEVEL_ALL);
-	// LogComponentEnable("LoraHelper", LOG_LEVEL_ALL);
-	// LogComponentEnable("LoraPhyHelper", LOG_LEVEL_ALL);
-	// LogComponentEnable("LorawanMacHelper", LOG_LEVEL_ALL);
-	// LogComponentEnable("PeriodicSenderHelper", LOG_LEVEL_ALL);
-	// LogComponentEnable("PeriodicSender", LOG_LEVEL_ALL);
-	// LogComponentEnable("LorawanMacHeader", LOG_LEVEL_ALL);
-	// LogComponentEnable("LoraFrameHeader", LOG_LEVEL_ALL);
-	// LogComponentEnable("NetworkScheduler", LOG_LEVEL_ALL);
-	// LogComponentEnable("NetworkServer", LOG_LEVEL_ALL);
-	// LogComponentEnable("NetworkStatus", LOG_LEVEL_ALL);
-	// LogComponentEnable("NetworkController", LOG_LEVEL_ALL);
+  RngSeedManager::SetSeed (time (NULL));
 
-	/***********
+  // Set up logging
+  /*LogComponentEnable ("ComplexLorawanNetworkExample", LOG_LEVEL_ALL);
+  LogComponentEnable ("LoraChannel", LOG_LEVEL_INFO);
+  */
+  // LogComponentEnable("LoraPhy", LOG_LEVEL_ALL);
+  // LogComponentEnable("EndDeviceLoraPhy", LOG_LEVEL_ALL);
+  // LogComponentEnable("GatewayLoraPhy", LOG_LEVEL_ALL);
+  // LogComponentEnable("LoraInterferenceHelper", LOG_LEVEL_ALL);
+  // LogComponentEnable("LorawanMac", LOG_LEVEL_ALL);
+  // LogComponentEnable("EndDeviceLorawanMac", LOG_LEVEL_ALL);
+  // LogComponentEnable("ClassAEndDeviceLorawanMac", LOG_LEVEL_ALL);
+  // LogComponentEnable("GatewayLorawanMac", LOG_LEVEL_ALL);
+  // LogComponentEnable("LogicalLoraChannelHelper", LOG_LEVEL_ALL);
+  // LogComponentEnable("LogicalLoraChannel", LOG_LEVEL_ALL);
+  // LogComponentEnable("LoraHelper", LOG_LEVEL_ALL);
+  // LogComponentEnable("LoraPhyHelper", LOG_LEVEL_ALL);
+  // LogComponentEnable("LorawanMacHelper", LOG_LEVEL_ALL);
+  // LogComponentEnable("PeopleCounterNodeHelper", LOG_LEVEL_ALL);
+  // LogComponentEnable("PeriodicSender", LOG_LEVEL_ALL);
+  // LogComponentEnable("LorawanMacHeader", LOG_LEVEL_ALL);
+  // LogComponentEnable("LoraFrameHeader", LOG_LEVEL_ALL);
+  // LogComponentEnable("NetworkScheduler", LOG_LEVEL_ALL);
+  // LogComponentEnable("NetworkServer", LOG_LEVEL_ALL);
+  // LogComponentEnable("NetworkStatus", LOG_LEVEL_ALL);
+  // LogComponentEnable("NetworkController", LOG_LEVEL_ALL);
+
+  /***********
 	 *  Setup  *
 	 ***********/
 
-	// Create the time value from the period
-	Time appPeriod = Seconds (appPeriodSeconds);
+  // Mobility
+  MobilityHelper mobility;
+  Ptr<ListPositionAllocator> nodePositions = CreateObject<ListPositionAllocator> ();
 
-	// Mobility
-	MobilityHelper mobility;
-	Ptr<ListPositionAllocator> nodePositions = CreateObject<ListPositionAllocator> ();
+  for (int i = 0; i < NUMBER_OF_NODES; i++)
+    nodePositions->Add (NODE_POSITIONS[i]);
 
-	for (int i = 0; i < NUMBER_OF_NODES; i++)
-		nodePositions->Add (NODE_POSITIONS[i]);
+  mobility.SetPositionAllocator (nodePositions);
+  mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
 
-	mobility.SetPositionAllocator (nodePositions);
-	mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-
-	/************************
+  /************************
 	 *  Create the channel  *
 	 ************************/
 
-	// Create the lora channel object
-	Ptr<LogDistancePropagationLossModel> loss = CreateObject<LogDistancePropagationLossModel> ();
-	loss->SetPathLossExponent (3.76);
-	loss->SetReference (1, 7.7);
+  // Create the lora channel object
+  Ptr<LogDistancePropagationLossModel> loss = CreateObject<LogDistancePropagationLossModel> ();
+  loss->SetPathLossExponent (3.76);
+  loss->SetReference (1, 7.7);
 
-	// Create the correlated shadowing component
-	Ptr<CorrelatedShadowingPropagationLossModel> shadowing =
-		CreateObject<CorrelatedShadowingPropagationLossModel> ();
+  // Create the correlated shadowing component
+  Ptr<CorrelatedShadowingPropagationLossModel> shadowing =
+      CreateObject<CorrelatedShadowingPropagationLossModel> ();
 
-	// Aggregate shadowing to the logdistance loss
-	loss->SetNext (shadowing);
+  // Aggregate shadowing to the logdistance loss
+  loss->SetNext (shadowing);
 
-	// Add the effect to the channel propagation loss
-	Ptr<BuildingPenetrationLoss> buildingLoss = CreateObject<BuildingPenetrationLoss> ();
+  // Add the effect to the channel propagation loss
+  Ptr<BuildingPenetrationLoss> buildingLoss = CreateObject<BuildingPenetrationLoss> ();
 
-	shadowing->SetNext (buildingLoss);
+  shadowing->SetNext (buildingLoss);
 
-	Ptr<PropagationDelayModel> delay = CreateObject<ConstantSpeedPropagationDelayModel> ();
+  Ptr<PropagationDelayModel> delay = CreateObject<ConstantSpeedPropagationDelayModel> ();
 
-	Ptr<LoraChannel> channel = CreateObject<LoraChannel> (loss, delay);
+  Ptr<LoraChannel> channel = CreateObject<LoraChannel> (loss, delay);
 
-	/************************
+  /************************
 	 *  Create the helpers  *
 	 ************************/
 
-	// Create the LoraPhyHelper
-	LoraPhyHelper phyHelper = LoraPhyHelper ();
-	phyHelper.SetChannel (channel);
+  // Create the LoraPhyHelper
+  LoraPhyHelper phyHelper = LoraPhyHelper ();
+  phyHelper.SetChannel (channel);
 
-	// Create the LorawanMacHelper
-	LorawanMacHelper macHelper = LorawanMacHelper ();
+  // Create the LorawanMacHelper
+  LorawanMacHelper macHelper = LorawanMacHelper ();
 
-	// Create the LoraHelper
-	LoraHelper helper = LoraHelper ();
-	helper.EnablePacketTracking (); // Output filename
-	// helper.EnableSimulationTimePrinting ();
+  // Create the LoraHelper
+  LoraHelper helper = LoraHelper ();
+  helper.EnablePacketTracking (); // Output filename
+  // helper.EnableSimulationTimePrinting ();
 
-	//Create the NetworkServerHelper
-	PeopleCounterHelper peopleCounterHelper = PeopleCounterHelper ();
+  //Create the NetworkServerHelper
+  PeopleCounterHelper peopleCounterHelper = PeopleCounterHelper ();
 
-	//Create the ForwarderHelper
-	ForwarderHelper forHelper = ForwarderHelper ();
+  //Create the ForwarderHelper
+  ForwarderHelper forHelper = ForwarderHelper ();
 
-	/************************
+  /************************
 	 *  Create End Devices  *
 	 ************************/
 
-	// Create a set of nodes
-	NodeContainer loraNodes;
-	loraNodes.Create (NUMBER_OF_NODES);
+  // Create a set of nodes
+  NodeContainer loraNodes;
+  loraNodes.Create (NUMBER_OF_NODES);
 
-	// Assign a mobility model to each node
-	mobility.Install (loraNodes);
+  // Assign a mobility model to each node
+  mobility.Install (loraNodes);
 
-	// Make it so that nodes are at a certain height > 0
-	for (NodeContainer::Iterator j = loraNodes.Begin (); j != loraNodes.End (); ++j)
-	{
-		Ptr<MobilityModel> mobility = (*j)->GetObject<MobilityModel> ();
-		Vector position = mobility->GetPosition ();
-		position.z = 1.2;
-		mobility->SetPosition (position);
-	}
+  // Make it so that nodes are at a certain height > 0
+  for (NodeContainer::Iterator j = loraNodes.Begin (); j != loraNodes.End (); ++j)
+    {
+      Ptr<MobilityModel> mobility = (*j)->GetObject<MobilityModel> ();
+      Vector position = mobility->GetPosition ();
+      position.z = 1.2;
+      mobility->SetPosition (position);
+    }
 
 	// Create the LoraNetDevices of the end devices
 	uint8_t nwkId = 54;
@@ -181,7 +181,6 @@ int main(int argc, char *argv[])
 		Ptr<LoraNetDevice> loraNetDevice = node->GetDevice (0)->GetObject<LoraNetDevice> ();
 		Ptr<LoraPhy> phy = loraNetDevice->GetPhy ();
 	}
-
 	/*********************
 	 *  Create Gateways  *
 	 *********************/
@@ -259,11 +258,7 @@ int main(int argc, char *argv[])
 	 *********************************************/
 
 	Time appStopTime = Seconds (SIMULATION_TIME);
-	PeriodicSenderHelper appHelper = PeriodicSenderHelper ();
-	appHelper.SetPeriod (Seconds (appPeriodSeconds));
-	appHelper.SetPacketSize (23);
-	Ptr<RandomVariableStream> rv = CreateObjectWithAttributes<UniformRandomVariable> (
-		"Min", DoubleValue (0), "Max", DoubleValue (10));
+	PeopleCounterNodeHelper appHelper = PeopleCounterNodeHelper ();
 	ApplicationContainer appContainer = appHelper.Install (loraNodes);
 
 	appContainer.Start (Seconds (0));
@@ -286,18 +281,18 @@ int main(int argc, char *argv[])
 	peopleCounterHelper.EnableAdr (true);
   	peopleCounterHelper.SetAdr (adrType);
 
-	//Create a forwarder for each gateway
-	forHelper.Install (gateways);
+    //Create a forwarder for each gateway
+    forHelper.Install (gateways);
 
-	////////////////
-	// Simulation //
-	////////////////
+    ////////////////
+    // Simulation //
+    ////////////////
 
-	Simulator::Stop (appStopTime + Hours (1));
+    Simulator::Stop (appStopTime + Hours (1));
 
-	AnimationInterface animation("animation.xml");
-	animation.SetBackgroundImage (MAP, 0, 0, 1, 1, 1);
-	uint32_t nodeIconId = animation.AddResource (NODE_ICON);
+    AnimationInterface animation ("animation.xml");
+    animation.SetBackgroundImage (MAP, 0, 0, 1, 1, 1);
+    uint32_t nodeIconId = animation.AddResource (NODE_ICON);
     uint32_t gwIconId = animation.AddResource (GW_ICON);
 
     for (int i = 0; i < NUMBER_OF_NODES; i++) {

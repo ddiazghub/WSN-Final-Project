@@ -13,7 +13,11 @@ def build(bld):
                                                'buildings'])
     module.source = [
         'model/people-counter.cc',
+        'model/people-counter-node.cc',
+        'model/people-counter-entry.cc',
+        'model/location.cc',
         'helper/people-counter-helper.cc',
+        'helper/people-counter-node-helper.cc'
         ]
 
     module_test = bld.create_ns3_module_test_library('wsn')
@@ -30,7 +34,11 @@ def build(bld):
     headers.module = 'wsn'
     headers.source = [
         'model/people-counter.h',
+        'model/people-counter-node.h',
+        'model/people-counter-entry.h',
+        'model/location.h',
         'helper/people-counter-helper.h',
+        'helper/people-counter-node-helper.h'
         ]
 
     if bld.env.ENABLE_EXAMPLES:

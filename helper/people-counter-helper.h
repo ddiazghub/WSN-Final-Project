@@ -30,6 +30,7 @@
 #include "ns3/point-to-point-helper.h"
 #include "ns3/network-server.h"
 #include "ns3/people-counter.h"
+#include "ns3/location.h"
 #include <stdint.h>
 #include <string>
 
