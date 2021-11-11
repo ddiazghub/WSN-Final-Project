@@ -33,6 +33,8 @@
 #include "ns3/people-counter-helper.h"
 #include "ns3/people-counter-node-helper.h"
 #include "ns3/people-counter-node.h"
+#include "ns3/basic-energy-source-helper.h"
+#include "ns3/file-helper.h"
 #include "network-settings.h"
 #include <map>
 #include <algorithm>
@@ -41,7 +43,7 @@
 using namespace ns3;
 using namespace lorawan;
 
-NS_LOG_COMPONENT_DEFINE ("ComplexLorawanNetworkExample");
+NS_LOG_COMPONENT_DEFINE ("WsnUninorte");
 
 #define NODE_ICON "/home/david/ns-3.35/src/wsn/res/node.png"
 #define GW_ICON "/home/david/ns-3.35/src/wsn/res/gw.png"
@@ -55,9 +57,8 @@ int main(int argc, char *argv[])
   RngSeedManager::SetSeed (time (NULL));
 
   // Set up logging
-  /*LogComponentEnable ("ComplexLorawanNetworkExample", LOG_LEVEL_ALL);
-  LogComponentEnable ("LoraChannel", LOG_LEVEL_INFO);
-  */
+  LogComponentEnable ("WsnUninorte", LOG_LEVEL_ALL);
+  //LogComponentEnable ("LoraChannel", LOG_LEVEL_INFO);
   // LogComponentEnable("LoraPhy", LOG_LEVEL_ALL);
   // LogComponentEnable("EndDeviceLoraPhy", LOG_LEVEL_ALL);
   // LogComponentEnable("GatewayLoraPhy", LOG_LEVEL_ALL);
@@ -78,7 +79,7 @@ int main(int argc, char *argv[])
   // LogComponentEnable("NetworkScheduler", LOG_LEVEL_ALL);
   // LogComponentEnable("NetworkServer", LOG_LEVEL_ALL);
   // LogComponentEnable("NetworkStatus", LOG_LEVEL_ALL);
-  // LogComponentEnable("NetworkController", LOG_LEVEL_ALL);
+  //LogComponentEnable("PeopleCounterNode", LOG_LEVEL_ALL);
 
   /***********
 	 *  Setup  *
@@ -170,7 +171,7 @@ int main(int argc, char *argv[])
 	macHelper.SetAddressGenerator (addrGen);
 	phyHelper.SetDeviceType (LoraPhyHelper::ED);
 	macHelper.SetDeviceType (LorawanMacHelper::ED_A);
-	helper.Install (phyHelper, macHelper, loraNodes);
+	NetDeviceContainer endDevicesNetDevices = helper.Install (phyHelper, macHelper, loraNodes);
 
 	// Now end devices are connected to the channel
 
@@ -280,9 +281,47 @@ int main(int argc, char *argv[])
 	peopleCounterHelper.Install (server);
 	peopleCounterHelper.EnableAdr (true);
   	peopleCounterHelper.SetAdr (adrType);
-
     //Create a forwarder for each gateway
     forHelper.Install (gateways);
+
+	helper.EnablePeriodicDeviceStatusPrinting (loraNodes, gateways, "nodeData.txt", Minutes(1));
+  helper.EnablePeriodicPhyPerformancePrinting (gateways, "gatewayPhyPerformance.txt", Minutes(1));
+  helper.EnablePeriodicGlobalPerformancePrinting ("globalPerformance.txt", Minutes(1));
+	
+	 /************************
+   * Install Energy Model *
+   ************************/
+
+  BasicEnergySourceHelper basicSourceHelper;
+  LoraRadioEnergyModelHelper radioEnergyHelper;
+
+  // configure energy source
+  basicSourceHelper.Set ("BasicEnergySourceInitialEnergyJ", DoubleValue (10000)); // Energy in J
+  basicSourceHelper.Set ("BasicEnergySupplyVoltageV", DoubleValue (3.3));
+
+  radioEnergyHelper.Set ("StandbyCurrentA", DoubleValue (0.0014));
+  radioEnergyHelper.Set ("TxCurrentA", DoubleValue (0.028));
+  radioEnergyHelper.Set ("SleepCurrentA", DoubleValue (0.0000015));
+  radioEnergyHelper.Set ("RxCurrentA", DoubleValue (0.0112));
+
+  radioEnergyHelper.SetTxCurrentModel ("ns3::ConstantLoraTxCurrentModel",
+                                       "TxCurrent", DoubleValue (0.028));
+
+  // install source on EDs' nodes
+  EnergySourceContainer sources = basicSourceHelper.Install (loraNodes);
+
+  
+  Names::Add ("/Names/EnergySource", sources.Get (0));
+
+  // install device model
+  DeviceEnergyModelContainer deviceModels = radioEnergyHelper.Install(endDevicesNetDevices, sources);
+
+  /**************
+   * Get output *
+   **************/
+  FileHelper fileHelper;
+  fileHelper.ConfigureFile ("battery-level", FileAggregator::SPACE_SEPARATED);
+  fileHelper.WriteProbe ("ns3::DoubleProbe", "/Names/EnergySource/RemainingEnergy", "Output");
 
     ////////////////
     // Simulation //
@@ -316,7 +355,16 @@ int main(int argc, char *argv[])
 	NS_LOG_INFO ("Computing performance metrics...");
 
 	LoraPacketTracker &tracker = helper.GetPacketTracker ();
-	std::cout << tracker.CountMacPacketsGlobally (Seconds (0), appStopTime + Hours (1)) << std::endl;
+	 NS_LOG_INFO ("Printing total sent MAC-layer packets and successful MAC-layer packets:");
+	 NS_LOG_INFO ("Sent Received");
+  std::cout << tracker.CountMacPacketsGlobally (Seconds (0), appStopTime + Hours (1)) << std::endl;
+NS_LOG_INFO ("GW 1 packets:");
+NS_LOG_INFO ("Sent Received Interfered NoMoreGw UnderSensitivity LostBecauseTx");
+  std::cout << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1), 15)
+            << std::endl;
 
+	NS_LOG_INFO ("GW 2 packets:");
+	std::cout << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1), 16)
+            << std::endl;
 	return 0;
 }

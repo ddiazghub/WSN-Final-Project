@@ -30,9 +30,11 @@
 #include "ns3/lora-frame-header.h"
 #include "ns3/node-container.h"
 #include "ns3/class-a-end-device-lorawan-mac.h"
+#include "ns3/people-counter-node.h"
 #include "ns3/mac-command.h"
 #include "ns3/people-counter.h"
 #include "ns3/people-counter-entry.h"
+#include "ns3/people-counter-header.h"
 #include "ns3/location.h"
 #include <iostream>
 
@@ -55,8 +57,42 @@ PeopleCounter::GetTypeId (void)
 
 PeopleCounter::PeopleCounter () : NetworkServer() {}
 
-PeopleCounter::~PeopleCounter () {
+PeopleCounter::~PeopleCounter () {}
 
+void PeopleCounter::StartApplication (void)
+{
+  for (auto it = this->locations.cbegin ();  it != this->locations.cend (); it++)
+  {
+    char buffer[25];
+    sprintf (buffer, "log/%s.txt", it->second.name.c_str());
+    std::ofstream file (buffer);
+    file.close ();
+  }
+  
+  NetworkServer::StartApplication ();
+  this->m_logEvent = Simulator::Schedule (Minutes(1), &PeopleCounter::LogToFile, this);
+}
+
+void PeopleCounter::LogToFile ()
+{
+  for (auto it = this->locations.cbegin ();  it != this->locations.cend (); it++)
+  {
+    char buffer[40];
+    sprintf (buffer, "log/siteOcupations/%s.txt", it->second.name.c_str());
+    std::fstream file (buffer, std::ios::app);
+    file << Simulator::Now () << " " << it->second.ocupation << std::endl;
+    file.close ();
+  }
+
+  this->m_logEvent = Simulator::Schedule (Minutes(1), &PeopleCounter::LogToFile, this);
+}
+/**
+   * Stop the NS application.
+   */
+void PeopleCounter::StopApplication (void)
+{
+  NetworkServer::StopApplication ();
+  Simulator::Cancel (this->m_logEvent);
 }
 
 void PeopleCounter::AddGateway (Ptr<Node> gateway, Ptr<NetDevice> netDevice)
@@ -132,17 +168,6 @@ PeopleCounter::AddNode (Ptr<Node> node)
   
   this->nodes.insert (std::pair<LoraDeviceAddress, Ptr<PeopleCounterEntry>> (
       edLorawanMac->GetDeviceAddress (), Create<PeopleCounterEntry> (nodeNumber, nodeNumber)));
-
-    for(auto it = locations.cbegin(); it != locations.cend(); ++it)
-    {
-        std::cout << it->first << " " << it->second << "\n";
-    }
-    std::cout << std::endl;
-
-    for(auto it = nodes.cbegin(); it != nodes.cend(); ++it)
-    {
-        std::cout << it->first << " " << it->second << "\n";
-    }
 }
 
 bool
@@ -151,8 +176,6 @@ PeopleCounter::Receive (Ptr<NetDevice> device, Ptr<const Packet> packet,
 {
   NS_LOG_FUNCTION (this << packet << protocol << address);
 
-  // Create a copy of the packet
-  Ptr<Packet> myPacket = packet->Copy ();
 
   // Fire the trace source
   m_receivedPacket (packet);
@@ -165,6 +188,17 @@ PeopleCounter::Receive (Ptr<NetDevice> device, Ptr<const Packet> packet,
 
   // Inform the controller of the newly arrived packet
   m_controller->OnNewPacket (packet);
+
+  /*
+  PeopleCounterHeader header;
+  Ptr<Packet> myPacket = packet->CreateFragment (30, 8);
+  myPacket->PeekHeader (header);
+  change = header.GetOcupationChange ();
+  nodeId = header.GetDeviceId ();
+  */
+
+  for (auto it = this->m_status->m_endDeviceStatuses.cbegin ();  it != this->m_status->m_endDeviceStatuses.cend (); it++)
+      this->locations[it->second->GetMac ()->GetDevice ()->GetNode ()->GetId ()].ocupation = Ptr<PeopleCounterNode> (dynamic_cast<PeopleCounterNode *> (PeekPointer (it->second->GetMac ()->GetDevice ()->GetNode ()->GetApplication (0))))->GetLocation().ocupation;
 
   return true;
 }

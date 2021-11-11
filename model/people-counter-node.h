@@ -57,6 +57,10 @@ public:
 
 	void SetLocation (Location location);
 
+	void SetOcupationChange (int32_t change);
+
+	int32_t GetOcupationChange ();
+
 
 private:
 	/**
@@ -87,6 +91,7 @@ private:
     Location location;
 
     Ptr<UniformRandomVariable> rng;
+    int32_t ocupationChange;
 };
 
 } //namespace ns3

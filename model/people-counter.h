@@ -58,6 +58,16 @@ public:
     PeopleCounter ();
     virtual ~PeopleCounter ();
 
+    /**
+   * Start the NS application.
+   */
+  void StartApplication (void);
+
+  /**
+   * Stop the NS application.
+   */
+  void StopApplication (void);
+
     void AddNodes (NodeContainer nodes);
 
     /**
@@ -80,25 +90,30 @@ public:
     bool Receive (Ptr<NetDevice> device, Ptr<const Packet> packet, uint16_t protocol,
                 const Address &address);
 
+    void LogToFile ();
+
   public:
     std::map<LoraDeviceAddress, Ptr<PeopleCounterEntry>> nodes;
     std::map<int, Location> locations = {
-      {0, Location(0, "Coliseo", 40, 340, 160, 0)},
-      {1, Location(1, "Plaza", 40, 396, 325, 0)},
-      {2, Location(2, "Biblioteca", 40, 365, 425, 0)},
+      {0, Location(0, "Coliseo", 300, 340, 160, 0)},
+      {1, Location(1, "Plaza", 50, 396, 325, 0)},
+      {2, Location(2, "Biblioteca", 100, 365, 425, 0)},
       {3, Location(3, "Café", 40, 355, 240, 0)},
-      {4, Location(4, "Bambú", 40, 230, 230, 0)},
-      {5, Location(5, "BambúII", 40, 145, 125, 0)},
-      {6, Location(6, "BloqueG", 40, 415, 230, 0)},
-      {7, Location(7, "5K", 40, 250, 160, 0)},
-      {8, Location(8, "Gimnasio", 40, 325, 185, 0)},
-      {9, Location(9, "MesasE", 40, 362, 350, 0)},
-      {10, Location(10, "MesasA", 40, 295, 370, 0)},
-      {11, Location(11, "MesasB", 40, 300, 335, 0)},
-      {12, Location(12, "MediaTorta", 40, 367, 198, 0)},
-      {13, Location(13, "Express", 40, 335, 280, 0)},
-      {14, Location(14, "Terrasse", 40, 317, 185, 0)}
+      {4, Location(4, "Bambú", 25, 230, 230, 0)},
+      {5, Location(5, "BambúII", 30, 145, 125, 0)},
+      {6, Location(6, "BloqueG", 20, 415, 230, 0)},
+      {7, Location(7, "5K", 45, 250, 160, 0)},
+      {8, Location(8, "Gimnasio", 15, 325, 185, 0)},
+      {9, Location(9, "MesasE", 15, 362, 350, 0)},
+      {10, Location(10, "MesasA", 15, 295, 370, 0)},
+      {11, Location(11, "MesasB", 15, 300, 335, 0)},
+      {12, Location(12, "MediaTorta", 15, 367, 198, 0)},
+      {13, Location(13, "Express", 20, 335, 280, 0)},
+      {14, Location(14, "Terrasse", 10, 317, 185, 0)}
     };
+
+  private:
+    EventId m_logEvent;
 };
 
 } // namespace lorawan

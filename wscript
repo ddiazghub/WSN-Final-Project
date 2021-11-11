@@ -15,6 +15,7 @@ def build(bld):
         'model/people-counter.cc',
         'model/people-counter-node.cc',
         'model/people-counter-entry.cc',
+        'model/people-counter-header.cc',
         'model/location.cc',
         'helper/people-counter-helper.cc',
         'helper/people-counter-node-helper.cc'
@@ -36,6 +37,7 @@ def build(bld):
         'model/people-counter.h',
         'model/people-counter-node.h',
         'model/people-counter-entry.h',
+        'model/people-counter-header.h',
         'model/location.h',
         'helper/people-counter-helper.h',
         'helper/people-counter-node-helper.h'

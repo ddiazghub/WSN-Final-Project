@@ -19,11 +19,18 @@
  */
 
 #include "ns3/pointer.h"
+#include "ns3/ptr.h"
 #include "ns3/log.h"
 #include "ns3/double.h"
 #include "ns3/string.h"
 #include "ns3/lora-net-device.h"
 #include "ns3/people-counter-node.h"
+#include "ns3/people-counter-header.h"
+#include "ns3/end-device-lorawan-mac.h"
+#include "ns3/class-a-end-device-lorawan-mac.h"
+#include "ns3/end-device-lora-phy.h"
+#include "ns3/simulator.h"
+#include "ns3/log.h"
 #include <iostream>
 #include <math.h>
 
@@ -48,7 +55,7 @@ PeopleCounterNode::GetTypeId (void)
 PeopleCounterNode::PeopleCounterNode ()
   : m_interval (Seconds (1)),
   m_initialDelay (Seconds (1)),
-  m_basePktSize (4)
+  m_basePktSize (2 * sizeof(int))
 {
   this->rng = CreateObjectWithAttributes<UniformRandomVariable> (
       "Min", DoubleValue (0), "Max", DoubleValue (1));
@@ -74,29 +81,26 @@ void PeopleCounterNode::SetLocation(Location location)
 void
 PeopleCounterNode::SendPacket (void)
 {
-    NS_LOG_FUNCTION (this);
-
     if (this->rng->GetValue () < 0.05)
       {
         double value = this->rng->GetValue ();
         int change;
-        
+        int id = this->m_node->GetId ();
+
         if (value < exp ((double) -this->location.ocupation / (double) this->location.capacity))
             change = 1;
         else
             change = -1;
-
-        std::cout << this->m_node->GetId() << " (" << Simulator::Now().GetSeconds() << ")" << ": " << value << " " << exp (-4 * (double) this->location.ocupation / (double) this->location.capacity) << " " <<  this->location.ocupation << " " << change << std::endl;
-        uint8_t *buffer = static_cast<uint8_t *> (static_cast<void *> (&change));
-
+    
         // Create and send a new packet
         Ptr<Packet> packet;
-        packet = Create<Packet> (buffer, m_basePktSize);
+        packet = Create<Packet> (0);
         m_mac->Send (packet);
-
         this->location.ocupation += change;
+        this->ocupationChange += change;
 
-        NS_LOG_DEBUG ("Sent a packet of size " << packet->GetSize ());
+        NS_LOG_DEBUG ("Sent a packet of size " << packet->GetSize () << " with data: Node= " << id
+                                               << " Change= " << change);
     }
 
     // Schedule the next SendPacket event
@@ -133,6 +137,140 @@ PeopleCounterNode::StopApplication (void)
   NS_LOG_FUNCTION_NOARGS ();
   Simulator::Cancel (m_sendEvent);
 }
+
+void PeopleCounterNode::SetOcupationChange (int32_t change)
+{
+  this->ocupationChange = change;
+}
+
+int32_t PeopleCounterNode::GetOcupationChange ()
+{
+  return this->ocupationChange;
+}
+
+/*
+void
+EndDeviceLorawanMac::DoSend (Ptr<Packet> packet)
+{
+  NS_LOG_FUNCTION (this);
+  // Checking if this is the transmission of a new packet
+  if (packet != m_retxParams.packet)
+    {
+      NS_LOG_DEBUG ("Received a new packet from application. Resetting retransmission parameters.");
+      m_currentFCnt++;
+      NS_LOG_DEBUG ("APP packet: " << packet << ".");
+
+      // Add the Lora Frame Header to the packet
+      LoraFrameHeader frameHdr;
+      ApplyNecessaryOptions (frameHdr);
+      packet->AddHeader (frameHdr);
+
+      NS_LOG_INFO ("Added frame header of size " << frameHdr.GetSerializedSize () <<
+                   " bytes.");
+
+      // Check that MACPayload length is below the allowed maximum
+      if (packet->GetSize () > m_maxAppPayloadForDataRate.at (m_dataRate))
+        {
+          NS_LOG_WARN ("Attempting to send a packet larger than the maximum allowed"
+                       << " size at this DataRate (DR" << unsigned(m_dataRate) <<
+                       "). Transmission canceled.");
+          return;
+        }
+
+
+      // Add the Lora Mac header to the packet
+      LorawanMacHeader macHdr;
+      ApplyNecessaryOptions (macHdr);
+      packet->AddHeader (macHdr);
+
+      // Reset MAC command list
+      m_macCommandList.clear ();
+
+      if (m_retxParams.waitingAck)
+        {
+          // Call the callback to notify about the failure
+          uint8_t txs = m_maxNumbTx - (m_retxParams.retxLeft);
+          m_requiredTxCallback (txs, false, m_retxParams.firstAttempt, m_retxParams.packet);
+          NS_LOG_DEBUG (" Received new packet from the application layer: stopping retransmission procedure. Used " <<
+                        unsigned(txs) << " transmissions out of a maximum of " << unsigned(m_maxNumbTx) << ".");
+        }
+
+      // Reset retransmission parameters
+      resetRetransmissionParameters ();
+
+        PeopleCounterNode *app = dynamic_cast<PeopleCounterNode *> (PeekPointer (this->m_device->GetNode ()->GetApplication (0)));
+      if (app != nullptr)
+      {
+        Ptr<PeopleCounterNode> peopleCounter = Ptr<PeopleCounterNode> (app);
+        PeopleCounterHeader header;
+        header.SetDeviceId (peopleCounter->GetNode ()->GetId());
+        header.SetOcupationChange (peopleCounter->GetOcupationChange());
+        peopleCounter->SetOcupationChange (0);
+        packet->AddHeader (header);
+      }
+
+      // If this is the first transmission of a confirmed packet, save parameters for the (possible) next retransmissions.
+      if (m_mType == LorawanMacHeader::CONFIRMED_DATA_UP)
+        {
+          m_retxParams.packet = packet->Copy ();
+          m_retxParams.retxLeft = m_maxNumbTx;
+          m_retxParams.waitingAck = true;
+          m_retxParams.firstAttempt = Simulator::Now ();
+          m_retxParams.retxLeft = m_retxParams.retxLeft - 1;       // decreasing the number of retransmissions
+
+          NS_LOG_DEBUG ("Message type is " << m_mType);
+          NS_LOG_DEBUG ("It is a confirmed packet. Setting retransmission parameters and decreasing the number of transmissions left.");
+
+          NS_LOG_INFO ("Added MAC header of size " << macHdr.GetSerializedSize () <<
+                       " bytes.");
+
+          // Sent a new packet
+          NS_LOG_DEBUG ("Copied packet: " << m_retxParams.packet);
+          m_sentNewPacket (m_retxParams.packet);
+
+          // static_cast<ClassAEndDeviceLorawanMac*>(this)->SendToPhy (m_retxParams.packet);
+          SendToPhy (m_retxParams.packet);
+        }
+      else
+        {
+          m_sentNewPacket (packet);
+          // static_cast<ClassAEndDeviceLorawanMac*>(this)->SendToPhy (packet);
+          SendToPhy (packet);
+        }
+    }
+  // this is a retransmission
+  else
+    {
+      if (m_retxParams.waitingAck)
+        {
+
+          // Remove the headers
+          LorawanMacHeader macHdr;
+          LoraFrameHeader frameHdr;
+          packet->RemoveHeader(macHdr);
+          packet->RemoveHeader(frameHdr);
+
+          // Add the Lora Frame Header to the packet
+          frameHdr = LoraFrameHeader ();
+          ApplyNecessaryOptions (frameHdr);
+          packet->AddHeader (frameHdr);
+
+          NS_LOG_INFO ("Added frame header of size " << frameHdr.GetSerializedSize () <<
+                       " bytes.");
+
+          // Add the Lorawan Mac header to the packet
+          macHdr = LorawanMacHeader ();
+          ApplyNecessaryOptions (macHdr);
+          packet->AddHeader (macHdr);
+          m_retxParams.retxLeft = m_retxParams.retxLeft - 1;           // decreasing the number of retransmissions
+          NS_LOG_DEBUG ("Retransmitting an old packet.");
+
+          // static_cast<ClassAEndDeviceLorawanMac*>(this)->SendToPhy (m_retxParams.packet);
+          SendToPhy (m_retxParams.packet);
+        }
+    }
+
+}*/
 
 }
 
