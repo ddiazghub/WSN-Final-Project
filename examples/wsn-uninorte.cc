@@ -39,6 +39,12 @@
 #include <map>
 #include <algorithm>
 #include <ctime>
+#include <cstdio>
+#include <iostream>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <array>
 
 using namespace ns3;
 using namespace lorawan;
@@ -81,12 +87,24 @@ int main(int argc, char *argv[])
   // LogComponentEnable("NetworkStatus", LOG_LEVEL_ALL);
   //LogComponentEnable("PeopleCounterNode", LOG_LEVEL_ALL);
 
-  /***********
+  std::string command = "python3 $NS3HOME/src/wsn/examples/gateway_placer.py ";
+  std::string placerOutput = exec (command.append(std::to_string(NUMBER_OF_GATEWAYS)).c_str());
+  std::vector<std::string> lines;
+  string_split (placerOutput, '\n', lines);
+
+  for (int i = 0; i < NUMBER_OF_GATEWAYS; i++)
+  {
+	std::vector<std::string> position;
+	string_split (lines[i], ' ', position);
+    GATEWAY_POSITIONS[i] = Vector (std::stoi (position[0]), std::stoi (position[1]), 0);
+  }
+
+    /***********
 	 *  Setup  *
 	 ***********/
 
-  // Mobility
-  MobilityHelper mobility;
+    // Mobility
+    MobilityHelper mobility;
   Ptr<ListPositionAllocator> nodePositions = CreateObject<ListPositionAllocator> ();
 
   for (int i = 0; i < NUMBER_OF_NODES; i++)
@@ -358,13 +376,41 @@ int main(int argc, char *argv[])
 	 NS_LOG_INFO ("Printing total sent MAC-layer packets and successful MAC-layer packets:");
 	 NS_LOG_INFO ("Sent Received");
   std::cout << tracker.CountMacPacketsGlobally (Seconds (0), appStopTime + Hours (1)) << std::endl;
-NS_LOG_INFO ("GW 1 packets:");
-NS_LOG_INFO ("Sent Received Interfered NoMoreGw UnderSensitivity LostBecauseTx");
-  std::cout << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1), 15)
-            << std::endl;
-
-	NS_LOG_INFO ("GW 2 packets:");
-	std::cout << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1), 16)
-            << std::endl;
+	
+	for (int i = 0; i < NUMBER_OF_GATEWAYS; i++)
+	{
+          NS_LOG_INFO (std::string("GW ").append(std::to_string(i)).append(" packets:"));
+          NS_LOG_INFO ("Sent Received Interfered NoMoreGw UnderSensitivity LostBecauseTx");
+          std::cout << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1), NUMBER_OF_NODES + i)
+                    << std::endl;
+	}
 	return 0;
 }
+
+std::string exec(const char* cmd) {
+    std::array<char, 128> buffer;
+    std::string result;
+    std::shared_ptr<FILE> pipe (popen (cmd, "r"), pclose);
+
+    if (!pipe)
+		throw std::runtime_error("popen() failed!");
+
+    while (!feof(pipe.get())) {
+        if (fgets(buffer.data(), 128, pipe.get()) != nullptr)
+            result += buffer.data();
+    }
+
+    return result;
+}
+
+void string_split(std::string const &str, const char delim, std::vector <std::string> &output )  
+{  
+	// create a stream from the string  
+	std::stringstream s(str);  
+		
+	std::string token;  
+	while (std:: getline (s, token, delim) )  
+	{  
+		output.push_back(token); // store the string in s2  
+	}  
+}  

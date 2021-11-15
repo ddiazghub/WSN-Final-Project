@@ -7,7 +7,7 @@
 #include <vector>
 
 #define NUMBER_OF_NODES 15
-#define NUMBER_OF_GATEWAYS 2
+#define NUMBER_OF_GATEWAYS 3
 #define NUMBER_OF_SERVERS 1
 #define SIMULATION_TIME 3600
 
@@ -31,11 +31,9 @@ std::vector<Location> NODE_POSITIONS = {
     Location(14, "Terrasse", 10, 317, 185, 0)
 };
 
-Vector GATEWAY_POSITIONS[NUMBER_OF_GATEWAYS] = {
-    Vector (260, 150, 0),
-    Vector (320, 370, 0)
-};
-
+Vector GATEWAY_POSITIONS[NUMBER_OF_GATEWAYS];
 }
+std::string exec(const char* cmd);
+void string_split (std::string const &str, const char delim, std::vector<std::string> &output);
 
 #endif
