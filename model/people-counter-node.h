@@ -27,6 +27,8 @@
 #include "ns3/attribute.h"
 #include "ns3/location.h"
 
+#define CAPACITY_MULTIPLIER 1
+
 namespace ns3 {
 namespace lorawan {
 
@@ -92,6 +94,8 @@ private:
 
     Ptr<UniformRandomVariable> rng;
     int32_t ocupationChange;
+    uint32_t entered = 0;
+    uint32_t exited = 0;
 };
 
 } //namespace ns3

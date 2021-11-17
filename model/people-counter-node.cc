@@ -32,6 +32,8 @@
 #include "ns3/simulator.h"
 #include "ns3/log.h"
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <math.h>
 
 namespace ns3 {
@@ -81,16 +83,22 @@ void PeopleCounterNode::SetLocation(Location location)
 void
 PeopleCounterNode::SendPacket (void)
 {
-    if (this->rng->GetValue () < 0.05)
+    if (this->rng->GetValue () < 0.05 * CAPACITY_MULTIPLIER)
       {
         double value = this->rng->GetValue ();
         int change;
         int id = this->m_node->GetId ();
 
         if (value < exp ((double) -this->location.ocupation / (double) this->location.capacity))
-            change = 1;
+        {
+          change = 1;
+          this->entered += 1;
+        }
         else
-            change = -1;
+        {
+          this->exited += 1;
+          change = -1;
+        }
     
         // Create and send a new packet
         Ptr<Packet> packet;
@@ -129,12 +137,23 @@ PeopleCounterNode::StartApplication (void)
   m_sendEvent = Simulator::Schedule (MilliSeconds(m_initialDelay.GetMilliSeconds() + (this->m_node->GetId() * 10)),
                                      &PeopleCounterNode::SendPacket, this);
   NS_LOG_DEBUG ("Event Id: " << m_sendEvent.GetUid ());
+
+  std::string str = std::to_string (CAPACITY_MULTIPLIER);
+  str.erase (str.find_last_not_of ('0') + 1, std::string::npos);
+  std::ofstream logFile (std::string("log/ocupationChange/").append(str).append(".txt"));
+  logFile << "NodeID Entered Exited" << std::endl;
+  logFile.close ();
 }
 
 void
 PeopleCounterNode::StopApplication (void)
 {
   NS_LOG_FUNCTION_NOARGS ();
+  std::string str = std::to_string (CAPACITY_MULTIPLIER);
+  str.erase (str.find_last_not_of ('0') + 1, std::string::npos);
+  std::fstream logFile (std::string("log/ocupationChange/").append(str).append(".txt"), std::ios::app);
+  logFile << this->m_node->GetId () << " " << this->entered << " " << this->exited << std::endl;
+  logFile.close ();
   Simulator::Cancel (m_sendEvent);
 }
 

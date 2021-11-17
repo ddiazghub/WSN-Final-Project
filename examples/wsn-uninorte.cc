@@ -369,20 +369,46 @@ int main(int argc, char *argv[])
 
 	///////////////////////////
 	// Print results to file //
-	///////////////////////////
-	NS_LOG_INFO ("Computing performance metrics...");
+	//////////////////////////
+  std::string str = std::to_string (CAPACITY_MULTIPLIER);
+  str.erase (str.find_last_not_of ('0') + 1, std::string::npos);
+  std::ofstream file (std::string("log/nodeEnergyConsumption/").append(str).append(".txt"));
 
-	LoraPacketTracker &tracker = helper.GetPacketTracker ();
-	 NS_LOG_INFO ("Printing total sent MAC-layer packets and successful MAC-layer packets:");
+  for (int i = 0; i < NUMBER_OF_NODES; i++)
+    file << i << " " << deviceModels.Get (i)->GetTotalEnergyConsumption () << std::endl;
+
+  file.close ();
+  
+  NS_LOG_INFO ("Computing performance metrics...");
+
+  LoraPacketTracker &tracker = helper.GetPacketTracker ();
+	
+  std::ofstream file2 (std::string("log/packetsPerGateway/").append(str).append(".txt"));
+
+    file2 << "Printing total sent MAC-layer packets and successful MAC-layer packets:" << std::endl;
+    file2 << "Sent Received" << std::endl;
+  file2 << tracker.CountMacPacketsGlobally (Seconds (0), appStopTime + Hours (1)) << std::endl;
+	
+	for (int i = 0; i < NUMBER_OF_GATEWAYS; i++)
+	{
+    file2 << "GW " << i << " packets:" << std::endl;
+    file2 << "Sent Received Interfered NoMoreGw UnderSensitivity LostBecauseTx" << std::endl;
+    file2 << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1),
+                                                NUMBER_OF_NODES + i)
+              << std::endl;
+	}
+
+  file2.close ();
+
+   NS_LOG_INFO ("Printing total sent MAC-layer packets and successful MAC-layer packets:");
 	 NS_LOG_INFO ("Sent Received");
   std::cout << tracker.CountMacPacketsGlobally (Seconds (0), appStopTime + Hours (1)) << std::endl;
 	
 	for (int i = 0; i < NUMBER_OF_GATEWAYS; i++)
 	{
-          NS_LOG_INFO (std::string("GW ").append(std::to_string(i)).append(" packets:"));
-          NS_LOG_INFO ("Sent Received Interfered NoMoreGw UnderSensitivity LostBecauseTx");
-          std::cout << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1), NUMBER_OF_NODES + i)
-                    << std::endl;
+    NS_LOG_INFO (std::string("GW ").append(std::to_string(i)).append(" packets:"));
+    NS_LOG_INFO ("Sent Received Interfered NoMoreGw UnderSensitivity LostBecauseTx");
+    std::cout << tracker.PrintPhyPacketsPerGw (Seconds (0), appStopTime + Hours (1), NUMBER_OF_NODES + i)  << std::endl;
 	}
 	return 0;
 }

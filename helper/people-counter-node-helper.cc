@@ -34,6 +34,10 @@ NS_LOG_COMPONENT_DEFINE ("PeopleCounterNodeHelper");
 PeopleCounterNodeHelper::PeopleCounterNodeHelper ()
 {
   m_factory.SetTypeId ("ns3::PeopleCounterNode");
+  for (uint i = 0; i < this->locations.size (); i++)
+  {
+    this->locations[i].capacity *= CAPACITY_MULTIPLIER;
+  }
 }
 
 PeopleCounterNodeHelper::~PeopleCounterNodeHelper ()
